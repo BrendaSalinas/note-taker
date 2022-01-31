@@ -23,12 +23,15 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ![app!](image2.png)
 ![app2!](image1.png)
+
+
 ## Technologies 
 
 Node JS
 Inquirer package
 Express JS
-uuid package 
+uuid package
+Heroku
 
 ## Deployment 
 
