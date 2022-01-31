@@ -1,17 +1,20 @@
 const router = require('express').Router();
-
-const readFiles = util.promisify(fs.readFile);
-const writeFiles = util.promisify(fs.writeFile);
+const notes = require('../db/db.json');
+const fs = require('fs');
+const path = require('path');
+const uuid = require('uuid');
 
 router.get('/notes', function(req, res) {
-    readFiles('./db/db.json', "utf8").then(function(inputs) {
-        note = [].concat(JSON.parse(inputs))
-        res.json(note);
-    });
+    res.sendFile(path.join(__dirname, '../db/db.json'))
 });
 
-router.post('/notes', function(req, res) {
-    co
-})
+router.post('/notes', (req, res) => {
+    const notes = JSON.parse(fs.readFileSync('./db/db.json'));
+    const note = req.body;
+    note.id = uuid.v4();
+    notes.push(note);
+    fs.writeFileSync('./db/db.json', JSON.stringify(notes))
+    res.json(notes);
+});
 
 module.exports = router;

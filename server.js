@@ -2,8 +2,6 @@ const { urlencoded } = require('body-parser');
 const express = require('express');
 const apiRoutes = require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
-const util = require('util');
-const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
